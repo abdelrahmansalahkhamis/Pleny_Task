@@ -13,6 +13,7 @@
 		A4A006CC29C393C60091F1E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4A006CB29C393C60091F1E4 /* Preview Assets.xcassets */; };
 		A4A006CE29C393C60091F1E4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A006CD29C393C60091F1E4 /* Persistence.swift */; };
 		A4A006D129C393C60091F1E4 /* Pleny_Task.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4A006CF29C393C60091F1E4 /* Pleny_Task.xcdatamodeld */; };
+		A4D9D73429C3A0BE00A6A47D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9D73329C3A0BE00A6A47D /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		A4A006CB29C393C60091F1E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A4A006CD29C393C60091F1E4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A4A006D029C393C60091F1E4 /* Pleny_Task.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pleny_Task.xcdatamodel; sourceTree = "<group>"; };
+		A4D9D73329C3A0BE00A6A47D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				A4A006CD29C393C60091F1E4 /* Persistence.swift */,
 				A4A006CF29C393C60091F1E4 /* Pleny_Task.xcdatamodeld */,
 				A4A006CA29C393C60091F1E4 /* Preview Content */,
+				A4D9D73329C3A0BE00A6A47D /* LoginView.swift */,
 			);
 			path = Pleny_Task;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				A4A006CE29C393C60091F1E4 /* Persistence.swift in Sources */,
 				A4A006D129C393C60091F1E4 /* Pleny_Task.xcdatamodeld in Sources */,
 				A4A006C729C393C20091F1E4 /* ContentView.swift in Sources */,
+				A4D9D73429C3A0BE00A6A47D /* LoginView.swift in Sources */,
 				A4A006C529C393C20091F1E4 /* Pleny_TaskApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BF75D5929C4E90D00C86F28 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D5829C4E90D00C86F28 /* LoginViewModel.swift */; };
+		9BF75D5C29C4EB0400C86F28 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D5B29C4EB0400C86F28 /* LoginModel.swift */; };
 		A4A006C529C393C20091F1E4 /* Pleny_TaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A006C429C393C20091F1E4 /* Pleny_TaskApp.swift */; };
 		A4A006C729C393C20091F1E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A006C629C393C20091F1E4 /* ContentView.swift */; };
 		A4A006C929C393C60091F1E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4A006C829C393C60091F1E4 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9BF75D5829C4E90D00C86F28 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9BF75D5B29C4EB0400C86F28 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		A4A006C129C393C20091F1E4 /* Pleny_Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pleny_Task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A006C429C393C20091F1E4 /* Pleny_TaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pleny_TaskApp.swift; sourceTree = "<group>"; };
 		A4A006C629C393C20091F1E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +42,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9BF75D5729C4E8EE00C86F28 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A4D9D73329C3A0BE00A6A47D /* LoginView.swift */,
+				9BF75D5829C4E90D00C86F28 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9BF75D5A29C4EAF100C86F28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9BF75D5B29C4EB0400C86F28 /* LoginModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A4A006B829C393C20091F1E4 = {
 			isa = PBXGroup;
 			children = (
@@ -57,13 +78,14 @@
 		A4A006C329C393C20091F1E4 /* Pleny_Task */ = {
 			isa = PBXGroup;
 			children = (
+				9BF75D5A29C4EAF100C86F28 /* Models */,
+				9BF75D5729C4E8EE00C86F28 /* Login */,
 				A4A006C429C393C20091F1E4 /* Pleny_TaskApp.swift */,
 				A4A006C629C393C20091F1E4 /* ContentView.swift */,
 				A4A006C829C393C60091F1E4 /* Assets.xcassets */,
 				A4A006CD29C393C60091F1E4 /* Persistence.swift */,
 				A4A006CF29C393C60091F1E4 /* Pleny_Task.xcdatamodeld */,
 				A4A006CA29C393C60091F1E4 /* Preview Content */,
-				A4D9D73329C3A0BE00A6A47D /* LoginView.swift */,
 			);
 			path = Pleny_Task;
 			sourceTree = "<group>";
@@ -147,7 +169,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A006CE29C393C60091F1E4 /* Persistence.swift in Sources */,
+				9BF75D5C29C4EB0400C86F28 /* LoginModel.swift in Sources */,
 				A4A006D129C393C60091F1E4 /* Pleny_Task.xcdatamodeld in Sources */,
+				9BF75D5929C4E90D00C86F28 /* LoginViewModel.swift in Sources */,
 				A4A006C729C393C20091F1E4 /* ContentView.swift in Sources */,
 				A4D9D73429C3A0BE00A6A47D /* LoginView.swift in Sources */,
 				A4A006C529C393C20091F1E4 /* Pleny_TaskApp.swift in Sources */,

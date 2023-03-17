@@ -12,13 +12,12 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var showPassword: Bool = false
     @FocusState private var focusedField: Field?
-    
+    @ObservedObject var viewModel: LoginViewModel
     enum Field {
         case username
         case password
     }
     var body: some View {
-        //GeometryReader { geometry in
         VStack {
             Image("loginForground")
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
@@ -31,7 +30,7 @@ struct LoginView: View {
                     Text("User Name")
                         .font(.system(size: 15))
                         .foregroundColor(Color(hex: 0x344054))
-                    TextField("Enter your name", text: $username)
+                    TextField("Enter your name", text: $viewModel.username)
                         .frame(height: 55)
                         .focused($focusedField, equals: .username)
                         .textContentType(.givenName)
@@ -41,62 +40,68 @@ struct LoginView: View {
                             .foregroundColor(.clear))
                 }
                 VStack(alignment: .leading) {
-                    
                     Text("Password")
                         .font(.system(size: 15))
                         .foregroundColor(Color(hex: 0x344054))
                     HStack {
                         Group {
                             if showPassword {
-                                SecureField("Enter your password", text: $password, onCommit: {
+                                SecureField("Enter your password", text: $viewModel.password, onCommit: {
                                     
                                 })
                                 .focused($focusedField, equals: .password)
-                            }
-                            else {
-                                TextField("Enter your password", text: $password)
-                                    .focused($focusedField, equals: .username)
+                            }else {
+                                TextField("Enter your password", text: $viewModel.password)
+                                    .focused($focusedField, equals: .password)
                                     .textContentType(.givenName)
                             }
                         }.frame(height: 30)
                         Button(action: {
                             showPassword.toggle()
                         }, label: {
-                            Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                            Image(systemName: showPassword ? "eye.fill" : "eye.slash.fill")
                         })
                         .accentColor(.secondary)
                     }.padding()
                         .overlay(RoundedRectangle(cornerRadius: 12)
                             .stroke(Color.secondary, lineWidth: 1)
                             .foregroundColor(.clear))
-                    
-                    
                 }
             }.padding()
-            Button(action: {
-                
-            }) {
-                HStack{
-                    Text("Sign In")
-                        .font(.system(size: 15))
-                        .padding()
-                        .foregroundColor(.white)
-                    
-                        .cornerRadius(10)
+                .disabled(viewModel.isSigningIn)
+            if viewModel.isSigningIn{
+                ProgressView()
+                    .progressViewStyle(.circular)
+            }else{
+                Button(action: {
+                    viewModel.signIn()
+                }) {
+                    HStack{
+                        Text("Sign In")
+                            .font(.system(size: 15))
+                            .padding()
+                            .foregroundColor(.white)
+                        
+                            .cornerRadius(10)
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 20, height: 46, alignment: .center)
+                    .background(Color(hex: 0x3F3FD1))
+                    .cornerRadius(20)
                 }
-                .frame(width: UIScreen.main.bounds.width - 20, height: 46, alignment: .center)
-                .background(Color(hex: 0x3F3FD1))
-                .cornerRadius(20)
             }
+            
             Spacer()
         }.onTapGesture {
             if (focusedField != nil) {
                 focusedField = nil
             }
         }
-        //}
-        
-        
+        .alert(isPresented: $viewModel.hasError) {
+                    Alert(
+                        title: Text("Sign In Failed"),
+                        message: Text("The email/password combination is invalid.")
+                    )
+                }
     }
 }
 

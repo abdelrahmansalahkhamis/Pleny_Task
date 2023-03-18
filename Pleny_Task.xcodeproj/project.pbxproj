@@ -10,6 +10,10 @@
 		9B76613D29C5B936007E242A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76613C29C5B936007E242A /* PostModel.swift */; };
 		9B76613F29C5D701007E242A /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76613E29C5D701007E242A /* EndPoint.swift */; };
 		9B76614129C5DE71007E242A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76614029C5DE71007E242A /* NetworkManager.swift */; };
+		9B76614729C60605007E242A /* Tab2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76614629C60605007E242A /* Tab2.swift */; };
+		9B76614929C60624007E242A /* Tab3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76614829C60624007E242A /* Tab3.swift */; };
+		9B76614B29C60636007E242A /* Tab4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76614A29C60636007E242A /* Tab4.swift */; };
+		9B76614D29C60650007E242A /* Tab5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76614C29C60650007E242A /* Tab5.swift */; };
 		9BF75D5929C4E90D00C86F28 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D5829C4E90D00C86F28 /* LoginViewModel.swift */; };
 		9BF75D5C29C4EB0400C86F28 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D5B29C4EB0400C86F28 /* LoginModel.swift */; };
 		9BF75D5F29C500F800C86F28 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D5E29C500F800C86F28 /* PostsView.swift */; };
@@ -28,6 +32,10 @@
 		9B76613C29C5B936007E242A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		9B76613E29C5D701007E242A /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		9B76614029C5DE71007E242A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9B76614629C60605007E242A /* Tab2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2.swift; sourceTree = "<group>"; };
+		9B76614829C60624007E242A /* Tab3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3.swift; sourceTree = "<group>"; };
+		9B76614A29C60636007E242A /* Tab4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab4.swift; sourceTree = "<group>"; };
+		9B76614C29C60650007E242A /* Tab5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab5.swift; sourceTree = "<group>"; };
 		9BF75D5829C4E90D00C86F28 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9BF75D5B29C4EB0400C86F28 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		9BF75D5E29C500F800C86F28 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
@@ -54,6 +62,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B76614229C603BB007E242A /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				9BF75D6029C500FD00C86F28 /* Posts */,
+				9B76614629C60605007E242A /* Tab2.swift */,
+				9B76614829C60624007E242A /* Tab3.swift */,
+				9B76614A29C60636007E242A /* Tab4.swift */,
+				9B76614C29C60650007E242A /* Tab5.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
 		9BF75D5729C4E8EE00C86F28 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +121,7 @@
 		A4A006C329C393C20091F1E4 /* Pleny_Task */ = {
 			isa = PBXGroup;
 			children = (
-				9BF75D6029C500FD00C86F28 /* Posts */,
+				9B76614229C603BB007E242A /* Tabs */,
 				9BF75D5A29C4EAF100C86F28 /* Models */,
 				9BF75D5729C4E8EE00C86F28 /* Login */,
 				A4A006C429C393C20091F1E4 /* Pleny_TaskApp.swift */,
@@ -194,13 +214,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B76614D29C60650007E242A /* Tab5.swift in Sources */,
+				9B76614B29C60636007E242A /* Tab4.swift in Sources */,
 				A4A006CE29C393C60091F1E4 /* Persistence.swift in Sources */,
 				9BF75D5C29C4EB0400C86F28 /* LoginModel.swift in Sources */,
 				A4A006D129C393C60091F1E4 /* Pleny_Task.xcdatamodeld in Sources */,
 				9B76614129C5DE71007E242A /* NetworkManager.swift in Sources */,
 				9BF75D5929C4E90D00C86F28 /* LoginViewModel.swift in Sources */,
 				A4A006C729C393C20091F1E4 /* ContentView.swift in Sources */,
+				9B76614729C60605007E242A /* Tab2.swift in Sources */,
 				9BF75D6229C5011300C86F28 /* PostsViewModel.swift in Sources */,
+				9B76614929C60624007E242A /* Tab3.swift in Sources */,
 				9B76613F29C5D701007E242A /* EndPoint.swift in Sources */,
 				A4D9D73429C3A0BE00A6A47D /* LoginView.swift in Sources */,
 				9BF75D5F29C500F800C86F28 /* PostsView.swift in Sources */,

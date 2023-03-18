@@ -11,28 +11,31 @@ import CoreData
 struct ContentView: View {
     @State private var showingSheet = false
     var body: some View {
-        TabView {
-            PostsView()
-                .tabItem {
-                    Image("tab1")
-                }
-            Tab2()
-                .tabItem {
-                    Image("tab2")
-                }
-            Tab3()
-                .tabItem {
-                    Image("tab3")
-                }
-            Tab4()
-                .tabItem {
-                    Image("tab4")
-                }
-            Tab5()
-                .tabItem {
-                    Image("tab5")
-                }
+        NavigationView {
+            TabView {
+                PostsView()
+                    .tabItem {
+                        Image("tab1")
+                    }
+                Tab2()
+                    .tabItem {
+                        Image("tab2")
+                    }
+                Tab3()
+                    .tabItem {
+                        Image("tab3")
+                    }
+                Tab4()
+                    .tabItem {
+                        Image("tab4")
+                    }
+                Tab5()
+                    .tabItem {
+                        Image("tab5")
+                    }
+            }
         }
+        
 //        NavigationView {
 //            Button(action: {
 //                self.showingSheet = true

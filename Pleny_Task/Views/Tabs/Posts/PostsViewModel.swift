@@ -50,8 +50,6 @@ class PostsViewModel: ObservableObject{
         page = page + 1
         do{
             let response = try await NetworkManager.shared.request(.posts(page: page), ofType: PostModel.self)
-            //self.totalPages = response.limit
-            //self.totalPages = response.total / response.limit
             self.posts += response.posts
             print("posts.count = \(posts.count)")
         }catch{

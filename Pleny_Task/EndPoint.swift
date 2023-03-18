@@ -11,7 +11,7 @@ import Foundation
 enum EndPoint{
     case posts(page: Int)
     case login(credintials: Data?)
-    case search
+    case search(queryString: String)
 }
 
 extension EndPoint{
@@ -30,8 +30,8 @@ extension EndPoint{
             return "/posts"
         case .login:
             return "auth/login"
-        case .search:
-            return "/posts"
+        case .search(let queryString):
+            return "/posts/search"
         }
     }
     
@@ -50,6 +50,8 @@ extension EndPoint{
         switch self {
         case .posts(let page):
             return ["page": "\(page)"]
+        case .search(let searchTerm):
+            return ["q": "\(searchTerm)"]
         default:
             return nil
         }
@@ -66,9 +68,9 @@ extension EndPoint{
         var requestQueryItems = queryItems?.compactMap { item in
             URLQueryItem(name: item.key, value: item.value)
         }
-        #if DEBUG
-        requestQueryItems?.append(URLQueryItem(name: "delay", value: "1"))
-        #endif
+//        #if DEBUG
+//        requestQueryItems?.append(URLQueryItem(name: "delay", value: "1"))
+//        #endif
         
         urlComponent.queryItems = requestQueryItems
         return urlComponent.url

@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B76613D29C5B936007E242A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76613C29C5B936007E242A /* PostModel.swift */; };
+		9B76613F29C5D701007E242A /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76613E29C5D701007E242A /* EndPoint.swift */; };
+		9B76614129C5DE71007E242A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76614029C5DE71007E242A /* NetworkManager.swift */; };
 		9BF75D5929C4E90D00C86F28 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D5829C4E90D00C86F28 /* LoginViewModel.swift */; };
 		9BF75D5C29C4EB0400C86F28 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D5B29C4EB0400C86F28 /* LoginModel.swift */; };
+		9BF75D5F29C500F800C86F28 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D5E29C500F800C86F28 /* PostsView.swift */; };
+		9BF75D6229C5011300C86F28 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D6129C5011300C86F28 /* PostsViewModel.swift */; };
+		9BF75D6429C508EE00C86F28 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF75D6329C508EE00C86F28 /* PostCell.swift */; };
 		A4A006C529C393C20091F1E4 /* Pleny_TaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A006C429C393C20091F1E4 /* Pleny_TaskApp.swift */; };
 		A4A006C729C393C20091F1E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A006C629C393C20091F1E4 /* ContentView.swift */; };
 		A4A006C929C393C60091F1E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4A006C829C393C60091F1E4 /* Assets.xcassets */; };
@@ -19,8 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B76613C29C5B936007E242A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		9B76613E29C5D701007E242A /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		9B76614029C5DE71007E242A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9BF75D5829C4E90D00C86F28 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9BF75D5B29C4EB0400C86F28 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		9BF75D5E29C500F800C86F28 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
+		9BF75D6129C5011300C86F28 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		9BF75D6329C508EE00C86F28 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		A4A006C129C393C20091F1E4 /* Pleny_Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pleny_Task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A006C429C393C20091F1E4 /* Pleny_TaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pleny_TaskApp.swift; sourceTree = "<group>"; };
 		A4A006C629C393C20091F1E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,8 +67,19 @@
 			isa = PBXGroup;
 			children = (
 				9BF75D5B29C4EB0400C86F28 /* LoginModel.swift */,
+				9B76613C29C5B936007E242A /* PostModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9BF75D6029C500FD00C86F28 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				9BF75D5E29C500F800C86F28 /* PostsView.swift */,
+				9BF75D6129C5011300C86F28 /* PostsViewModel.swift */,
+				9BF75D6329C508EE00C86F28 /* PostCell.swift */,
+			);
+			path = Posts;
 			sourceTree = "<group>";
 		};
 		A4A006B829C393C20091F1E4 = {
@@ -78,6 +101,7 @@
 		A4A006C329C393C20091F1E4 /* Pleny_Task */ = {
 			isa = PBXGroup;
 			children = (
+				9BF75D6029C500FD00C86F28 /* Posts */,
 				9BF75D5A29C4EAF100C86F28 /* Models */,
 				9BF75D5729C4E8EE00C86F28 /* Login */,
 				A4A006C429C393C20091F1E4 /* Pleny_TaskApp.swift */,
@@ -86,6 +110,8 @@
 				A4A006CD29C393C60091F1E4 /* Persistence.swift */,
 				A4A006CF29C393C60091F1E4 /* Pleny_Task.xcdatamodeld */,
 				A4A006CA29C393C60091F1E4 /* Preview Content */,
+				9B76613E29C5D701007E242A /* EndPoint.swift */,
+				9B76614029C5DE71007E242A /* NetworkManager.swift */,
 			);
 			path = Pleny_Task;
 			sourceTree = "<group>";
@@ -171,10 +197,16 @@
 				A4A006CE29C393C60091F1E4 /* Persistence.swift in Sources */,
 				9BF75D5C29C4EB0400C86F28 /* LoginModel.swift in Sources */,
 				A4A006D129C393C60091F1E4 /* Pleny_Task.xcdatamodeld in Sources */,
+				9B76614129C5DE71007E242A /* NetworkManager.swift in Sources */,
 				9BF75D5929C4E90D00C86F28 /* LoginViewModel.swift in Sources */,
 				A4A006C729C393C20091F1E4 /* ContentView.swift in Sources */,
+				9BF75D6229C5011300C86F28 /* PostsViewModel.swift in Sources */,
+				9B76613F29C5D701007E242A /* EndPoint.swift in Sources */,
 				A4D9D73429C3A0BE00A6A47D /* LoginView.swift in Sources */,
+				9BF75D5F29C500F800C86F28 /* PostsView.swift in Sources */,
 				A4A006C529C393C20091F1E4 /* Pleny_TaskApp.swift in Sources */,
+				9BF75D6429C508EE00C86F28 /* PostCell.swift in Sources */,
+				9B76613D29C5B936007E242A /* PostModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

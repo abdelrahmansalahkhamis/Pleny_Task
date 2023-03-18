@@ -24,7 +24,8 @@ struct ContentView: View {
             }
             
         }.sheet(isPresented: $showingSheet) {
-            LoginView(viewModel: LoginViewModel())
+            //LoginView(viewModel: LoginViewModel())
+            PostsView()
         }
     }
 }

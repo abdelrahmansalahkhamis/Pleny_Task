@@ -11,6 +11,7 @@ struct PostCell: View{
     let post: Post
     var body: some View{
         VStack {
+            Divider()
             HStack {
                 Image("profile").cornerRadius(10)
                 VStack(alignment: .leading) {

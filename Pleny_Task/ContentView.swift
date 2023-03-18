@@ -11,21 +11,43 @@ import CoreData
 struct ContentView: View {
     @State private var showingSheet = false
     var body: some View {
-        NavigationView {
-            Button(action: {
-                self.showingSheet = true
-            }, label: {
-                Text("Show Login")
-            })
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-            }
-            
-        }.sheet(isPresented: $showingSheet) {
-            //LoginView(viewModel: LoginViewModel())
+        TabView {
             PostsView()
+                .tabItem {
+                    Image("tab1")
+                }
+            Tab2()
+                .tabItem {
+                    Image("tab2")
+                }
+            Tab3()
+                .tabItem {
+                    Image("tab3")
+                }
+            Tab4()
+                .tabItem {
+                    Image("tab4")
+                }
+            Tab5()
+                .tabItem {
+                    Image("tab5")
+                }
         }
+//        NavigationView {
+//            Button(action: {
+//                self.showingSheet = true
+//            }, label: {
+//                Text("Show Login")
+//            })
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    EditButton()
+//                }
+//            }
+//
+//        }.sheet(isPresented: $showingSheet) {
+//            //LoginView(viewModel: LoginViewModel())
+//            PostsView()
+//        }
     }
 }

@@ -13,6 +13,7 @@ struct LoginView: View {
     @State private var showPassword: Bool = false
     @FocusState private var focusedField: Field?
     @ObservedObject var viewModel: LoginViewModel
+    @EnvironmentObject var authentication: Authentication
     enum Field {
         case username
         case password
@@ -74,7 +75,15 @@ struct LoginView: View {
                     .progressViewStyle(.circular)
             }else{
                 Button(action: {
-                    viewModel.signIn()
+                    Task {
+                        await viewModel.signIn{ success in
+                            authentication.updateValidation(success)
+                        }
+                    }
+                    
+//                    async{
+//                        await viewModel.signIn()
+//                    }
                 }) {
                     HStack{
                         Text("Sign In")

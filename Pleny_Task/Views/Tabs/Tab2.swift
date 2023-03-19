@@ -10,5 +10,6 @@ import SwiftUI
 struct Tab2: View{
     var body: some View{
         Text("Tab 2")
+            .background(.red)
     }
 }

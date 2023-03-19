@@ -1,5 +1,5 @@
 //
-//  Tab5.swift
+//  Tab4.swift
 //  Pleny_Task
 //
 //  Created by Abdelrahman Salah on 18/03/2023.
@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct Tab5: View{
+struct Tab4: View{
     var body: some View{
-        Text("Tab 5")
+        Text("Tab 4")
+            .background(.orange)
     }
 }
 

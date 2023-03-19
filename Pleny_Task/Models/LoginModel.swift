@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginModel: Decodable {
+struct LoginModel: Codable {
 
     // MARK: - Properties
     let id: Int

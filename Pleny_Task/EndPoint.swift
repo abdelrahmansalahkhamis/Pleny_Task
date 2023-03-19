@@ -9,9 +9,9 @@ import Foundation
 
 
 enum EndPoint{
-    case posts(page: Int)
+    case posts(limit: Int, skip: Int)
     case login(credintials: Data?)
-    case search
+    case search(limit: Int, queryString: String)
 }
 
 extension EndPoint{
@@ -26,18 +26,18 @@ extension EndPoint{
 
     var path: String{
         switch self {
-        case .posts(let page):
+        case .posts(let limit, let skip):
             return "/posts"
         case .login:
-            return "auth/login"
-        case .search:
-            return "/posts"
+            return "/auth/login"
+        case .search(let queryString):
+            return "/posts/search"
         }
     }
     
     var methodType: MethodType{
         switch self {
-        case .posts(let page):
+        case .posts:
             return .GET
         case .login(let credintials):
             return .POST(data: credintials)
@@ -48,12 +48,32 @@ extension EndPoint{
     
     var queryItems: [String: String]?{
         switch self {
-        case .posts(let page):
-            return ["page": "\(page)"]
+        case .posts(let limit, let skip):
+            return [
+                "skip": "\(skip)",
+                "limit": "\(limit)"
+            ]
+        case .search(let page, let searchTerm):
+            return [
+                "q": "\(searchTerm)",
+                "page": "\(page)"
+            ]
+        case .login(let credintials):
+            return [:]
         default:
             return nil
         }
     }
+    
+    var bodyItems: Data? {
+        switch self {
+        case .login(let credintails):
+            return credintails
+        default:
+            return nil
+        }
+    }
+    
 }
 
 extension EndPoint{
@@ -63,15 +83,21 @@ extension EndPoint{
         urlComponent.host = host
         urlComponent.path = path
         
-        var requestQueryItems = queryItems?.compactMap { item in
+        let requestQueryItems = queryItems?.compactMap { item in
             URLQueryItem(name: item.key, value: item.value)
         }
-        #if DEBUG
-        requestQueryItems?.append(URLQueryItem(name: "delay", value: "1"))
-        #endif
+//        #if DEBUG
+//        requestQueryItems?.append(URLQueryItem(name: "delay", value: "1"))
+//        #endif
         
         urlComponent.queryItems = requestQueryItems
         return urlComponent.url
     }
 }
 
+extension EndPoint{
+    var body: Data?{
+        let jsonData = try? JSONSerialization.data(withJSONObject: bodyItems)
+        return jsonData
+    }
+}

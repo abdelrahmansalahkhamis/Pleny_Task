@@ -7,13 +7,17 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
 struct LoginView: View {
+    @EnvironmentObject var coordinator: Coordinator
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showPassword: Bool = false
     @FocusState private var focusedField: Field?
     @ObservedObject var viewModel: LoginViewModel
     @EnvironmentObject var authentication: Authentication
+    @ObservedObject var keyboardHeightHelper = KeyboardHeightHelper()
+    @State var loginSuccess: Bool = false
     enum Field {
         case username
         case password
@@ -22,7 +26,8 @@ struct LoginView: View {
         VStack {
             Image("loginForground")
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(contentMode: .fit)
+                .padding()
             Text("Welcome")
                 .font(.system(size: 20))
                 .foregroundColor(Color(hex: 0x3F3FD1))
@@ -32,7 +37,7 @@ struct LoginView: View {
                         .font(.system(size: 15))
                         .foregroundColor(Color(hex: 0x344054))
                     TextField("Enter your name", text: $viewModel.username)
-                        .frame(height: 55)
+                        .frame(height: 45)
                         .focused($focusedField, equals: .username)
                         .textContentType(.givenName)
                         .padding([.leading, .trailing], 20)
@@ -47,16 +52,16 @@ struct LoginView: View {
                     HStack {
                         Group {
                             if showPassword {
+                                TextField("Enter your password", text: $viewModel.password)
+                                    .focused($focusedField, equals: .password)
+                                    .textContentType(.givenName)
+                            }else {
                                 SecureField("Enter your password", text: $viewModel.password, onCommit: {
                                     
                                 })
                                 .focused($focusedField, equals: .password)
-                            }else {
-                                TextField("Enter your password", text: $viewModel.password)
-                                    .focused($focusedField, equals: .password)
-                                    .textContentType(.givenName)
                             }
-                        }.frame(height: 30)
+                        }.frame(height: 20)
                         Button(action: {
                             showPassword.toggle()
                         }, label: {
@@ -70,6 +75,7 @@ struct LoginView: View {
                 }
             }.padding()
                 .disabled(viewModel.isSigningIn)
+            
             if viewModel.isSigningIn{
                 ProgressView()
                     .progressViewStyle(.circular)
@@ -78,12 +84,9 @@ struct LoginView: View {
                     Task {
                         await viewModel.signIn{ success in
                             authentication.updateValidation(success)
+                            self.loginSuccess = success
                         }
                     }
-                    
-//                    async{
-//                        await viewModel.signIn()
-//                    }
                 }) {
                     HStack{
                         Text("Sign In")
@@ -105,20 +108,17 @@ struct LoginView: View {
                 focusedField = nil
             }
         }
+        .offset(y: -self.keyboardHeightHelper.keyboardHeight / 2)
+        .fullScreenCover(isPresented: $loginSuccess, content: {
+            NavigationView {
+                coordinator.build(fullScreenCover: .tabView)
+            }
+        })
         .alert(isPresented: $viewModel.hasError) {
-                    Alert(
-                        title: Text("Sign In Failed"),
-                        message: Text("The email/password combination is invalid.")
-                    )
-                }
-    }
-}
-
-extension Color {
-    init(hex: Int, opacity: Double = 1.0) {
-        let red = Double((hex & 0xff0000) >> 16) / 255.0
-        let green = Double((hex & 0xff00) >> 8) / 255.0
-        let blue = Double((hex & 0xff) >> 0) / 255.0
-        self.init(.sRGB, red: red, green: green, blue: blue, opacity: opacity)
+            Alert(
+                title: Text("Sign In Failed"),
+                message: Text("The email/password combination is invalid.")
+            )
+        }
     }
 }

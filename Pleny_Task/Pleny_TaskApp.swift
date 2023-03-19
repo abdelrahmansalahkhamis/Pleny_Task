@@ -9,21 +9,16 @@ import SwiftUI
 
 @main
 struct Pleny_TaskApp: App {
-    @StateObject var loginVM = LoginViewModel()
     @StateObject var authentication = Authentication()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(authentication)
-//            if authentication.isValidated{
-//                    ContentView()
-//                    .navigationBarHidden(false)
-//                        .environmentObject(authentication)
-//            }else{
-//                LoginView(viewModel: LoginViewModel())
-//                    .environmentObject(authentication)
-//            }
+            if #available(iOS 16.0, *) {
+                CoordinatorView()
+                    .environmentObject(authentication)
+            } else {
+                // Fallback on earlier versions
+            }
             
         }
     }

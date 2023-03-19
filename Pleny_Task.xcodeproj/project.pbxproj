@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B1DC05B29C763C300B96ADF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DC05A29C763C300B96ADF /* Coordinator.swift */; };
+		9B1DC05D29C7640000B96ADF /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DC05C29C7640000B96ADF /* CoordinatorView.swift */; };
+		9B1DC06029C78D0800B96ADF /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DC05F29C78D0800B96ADF /* KeyboardHandler.swift */; };
+		9B1DC06229C78D2500B96ADF /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DC06129C78D2500B96ADF /* Color+Ext.swift */; };
 		9B470EB229C7039300A34E49 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B470EB129C7039300A34E49 /* String+Ext.swift */; };
 		9B76613D29C5B936007E242A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76613C29C5B936007E242A /* PostModel.swift */; };
 		9B76613F29C5D701007E242A /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76613E29C5D701007E242A /* EndPoint.swift */; };
@@ -33,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B1DC05A29C763C300B96ADF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9B1DC05C29C7640000B96ADF /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
+		9B1DC05F29C78D0800B96ADF /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
+		9B1DC06129C78D2500B96ADF /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		9B470EB129C7039300A34E49 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		9B76613C29C5B936007E242A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		9B76613E29C5D701007E242A /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -70,10 +78,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B1DC05E29C78CF300B96ADF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9B1DC05F29C78D0800B96ADF /* KeyboardHandler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9B470EB029C7038100A34E49 /* Extesions */ = {
 			isa = PBXGroup;
 			children = (
 				9B470EB129C7039300A34E49 /* String+Ext.swift */,
+				9B1DC06129C78D2500B96ADF /* Color+Ext.swift */,
 			);
 			path = Extesions;
 			sourceTree = "<group>";
@@ -155,6 +172,7 @@
 		A4A006C329C393C20091F1E4 /* Pleny_Task */ = {
 			isa = PBXGroup;
 			children = (
+				9B1DC05E29C78CF300B96ADF /* Helpers */,
 				9B470EB029C7038100A34E49 /* Extesions */,
 				9B76614E29C60C0C007E242A /* Views */,
 				9BF75D5A29C4EAF100C86F28 /* Models */,
@@ -168,6 +186,8 @@
 				9B76613E29C5D701007E242A /* EndPoint.swift */,
 				9B76614029C5DE71007E242A /* NetworkManager.swift */,
 				9BF403E429C752E100C307A3 /* Authentication.swift */,
+				9B1DC05A29C763C300B96ADF /* Coordinator.swift */,
+				9B1DC05C29C7640000B96ADF /* CoordinatorView.swift */,
 			);
 			path = Pleny_Task;
 			sourceTree = "<group>";
@@ -256,13 +276,17 @@
 				9BF75D5C29C4EB0400C86F28 /* LoginModel.swift in Sources */,
 				9B9946DC29C6481200192A35 /* SearchViewModel.swift in Sources */,
 				A4A006D129C393C60091F1E4 /* Pleny_Task.xcdatamodeld in Sources */,
+				9B1DC05B29C763C300B96ADF /* Coordinator.swift in Sources */,
 				9B76614129C5DE71007E242A /* NetworkManager.swift in Sources */,
 				9BF75D5929C4E90D00C86F28 /* LoginViewModel.swift in Sources */,
 				A4A006C729C393C20091F1E4 /* ContentView.swift in Sources */,
+				9B1DC05D29C7640000B96ADF /* CoordinatorView.swift in Sources */,
 				9B76614729C60605007E242A /* Tab2.swift in Sources */,
 				9BF75D6229C5011300C86F28 /* PostsViewModel.swift in Sources */,
 				9B76615129C60C4B007E242A /* SearchView.swift in Sources */,
+				9B1DC06229C78D2500B96ADF /* Color+Ext.swift in Sources */,
 				9B76614929C60624007E242A /* Tab3.swift in Sources */,
+				9B1DC06029C78D0800B96ADF /* KeyboardHandler.swift in Sources */,
 				9B76613F29C5D701007E242A /* EndPoint.swift in Sources */,
 				9BF403E529C752E200C307A3 /* Authentication.swift in Sources */,
 				A4D9D73429C3A0BE00A6A47D /* LoginView.swift in Sources */,

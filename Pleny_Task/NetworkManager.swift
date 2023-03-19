@@ -18,10 +18,8 @@ class NetworkManager: NetworkingManagerProtocol{
         guard let url = endpoint.url else {
             throw NetworkingError.invalidURL
         }
-        
         let request = buildRequest(from: url, methodType: endpoint.methodType)
         let (data, response) = try await URLSession.shared.data(for: request)
-        
         guard let response = response as? HTTPURLResponse, (200...300) ~= response.statusCode else {
             let statusCode = (response as! HTTPURLResponse).statusCode
             throw NetworkingError.invalidStatusCode(statusCode: statusCode)
@@ -50,25 +48,6 @@ class NetworkManager: NetworkingManagerProtocol{
 }
 
 
-
-extension NetworkManager.NetworkingError {
-    var errorDescription: String? {
-        switch self {
-        case .invalidURL:
-            return "URL isn't valid"
-        case .custom(let error):
-            return "Something went wrong: \(error.localizedDescription)"
-        case .invalidStatusCode:
-            return "Status code falls into the wrong range"
-        case .invalidData:
-            return "Response data is invalid"
-        case .failedToDecode(let error):
-            return "Decode failure occured: \(error)"
-        }
-    }
-}
-
-
 extension NetworkManager {
     enum NetworkingError: LocalizedError {
         case invalidURL
@@ -78,26 +57,6 @@ extension NetworkManager {
         case failedToDecode(error: Error)
     }
 }
-
-//extension NetworkManager.NetworkingError: Equatable {
-//    static func == (lhs: NetworkManager.NetworkingError, rhs: NetworkManager.NetworkingError) -> Bool {
-//        switch (lhs, rhs) {
-//        case (.invalidURL, .invalidURL):
-//            return true
-//        case (.custom(let lhsType), .custom(let rhsType)):
-//            return lhsType.localizedDescription == rhsType.localizedDescription
-//        case (.invalidStatusCode(let lhsType), .invalidStatusCode(let rhsType)):
-//            return lhsType == rhsType
-//        case (.invalidData, .invalidData):
-//            return true
-//        case (.failedToDecode(let lhsType), .failedToDecode(let rhsType)):
-//            return lhsType.localizedDescription == rhsType.localizedDescription
-//        default:
-//            return false
-//        }
-//    }
-//}
-
 private extension NetworkManager {
     func buildRequest(from url: URL, methodType: EndPoint.MethodType) -> URLRequest {
         

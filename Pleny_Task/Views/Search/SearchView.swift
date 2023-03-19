@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+@available(iOS 16.0, *)
 struct SearchView: View {
     var dismissSearchView: ()->()
     @State var isEditing: Bool = false
     @State private var searchText = ""
     @StateObject var vm = SearchViewModel()
-    
+    @EnvironmentObject var coordinator: Coordinator
     let columns = [
             GridItem(.flexible())
         ]
@@ -29,6 +30,7 @@ struct SearchView: View {
                     Button {
                         self.isEditing = false
                         self.searchText = ""
+                        self.coordinator.dismissFullScreenCover()
                         self.dismissSearchView()
                     } label: {
                         Image("emptyText")

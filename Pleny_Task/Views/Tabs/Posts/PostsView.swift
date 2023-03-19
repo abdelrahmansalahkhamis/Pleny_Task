@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
 struct PostsView: View{
-    @State private var showingSheet = false
+    @EnvironmentObject var coordinator: Coordinator
     let columns = [
         GridItem(.flexible())
     ]
@@ -42,8 +43,7 @@ struct PostsView: View{
             ToolbarItem(placement: .navigationBarTrailing) {
                 
                 Button {
-                    
-                    self.showingSheet = true
+                    self.coordinator.isFullScreenPresented = true
                 } label: {
                     Image("searchIcon")
                 }
@@ -56,10 +56,8 @@ struct PostsView: View{
         .task {
             await vm.fetchPosts()
         }
-        .fullScreenCover(isPresented: $showingSheet, content: {
-            SearchView{
-                self.showingSheet = false
-            }
+        .fullScreenCover(isPresented: $coordinator.isFullScreenPresented, content: {
+            coordinator.build(fullScreenCover: .search)
         })
     }
 }

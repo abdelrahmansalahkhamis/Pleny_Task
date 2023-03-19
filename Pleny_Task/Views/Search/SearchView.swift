@@ -46,8 +46,13 @@ struct SearchView: View {
                 }else{
                     ScrollView {
                         LazyVGrid(columns: columns) {
-                            ForEach(vm.posts, id: \.id) { post in
+                            ForEach(vm.searchedPosts, id: \.id) { post in
                                 PostCell(post: post)
+                                    .task {
+                                        if vm.hasRechedEnd(of: post) && !vm.isFetching{
+                                            await vm.search(text: searchText)
+                                        }
+                                    }
                             }
                         }.padding(.all)
                             .onChange(of: searchText) { newValue in

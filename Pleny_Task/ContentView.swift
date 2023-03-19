@@ -10,6 +10,8 @@ import CoreData
 
 struct ContentView: View {
     @State private var showingSheet = false
+    @EnvironmentObject var vm: LoginViewModel
+    @AppStorage("loginStatus") private var loginStatus = false
     var body: some View {
         NavigationView {
             TabView {

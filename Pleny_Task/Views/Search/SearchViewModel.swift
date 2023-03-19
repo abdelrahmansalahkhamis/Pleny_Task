@@ -9,7 +9,7 @@ import Foundation
 
 
 class SearchViewModel: ObservableObject{
-    @Published var posts: [Post] = []
+    @Published var searchedPosts: [Post] = []
     @Published var viewState: ViewState?
     @Published var hasError: Bool = false
     @Published private(set) var error: NetworkManager.NetworkingError?
@@ -30,9 +30,14 @@ class SearchViewModel: ObservableObject{
         defer{viewState = .finished}
         page = page + 1
         do{
-            let response = try await NetworkManager.shared.request(.search(queryString: text), ofType: PostModel.self)
-            self.posts = response.posts
-            print("posts.count = \(posts.count)")
+            let response = try await NetworkManager.shared.request(.search(limit: page, queryString: text.trimmed()), ofType: PostModel.self)
+            
+            // remove data if its new request
+            if page == 1{
+                searchedPosts.removeAll()
+            }
+            self.searchedPosts = response.posts
+            print("posts.count = \(searchedPosts.count)")
         }catch{
             self.hasError = true
             if let networkingError = error as? NetworkManager.NetworkingError {
@@ -42,23 +47,15 @@ class SearchViewModel: ObservableObject{
             }
         }
     }
+    
+    func hasRechedEnd(of post: Post) -> Bool{
+        return searchedPosts.last?.id == post.id
+    }
 }
 extension SearchViewModel{
     enum ViewState{
         case fetching
         case loading
         case finished
-    }
-}
-
-
-extension SearchViewModel{
-    func reset(){
-        if viewState == .finished{
-            posts.removeAll()
-            page = 1
-            totalPages = nil
-            viewState = nil
-        }
     }
 }

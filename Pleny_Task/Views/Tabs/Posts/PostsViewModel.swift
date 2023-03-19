@@ -14,6 +14,8 @@ class PostsViewModel: ObservableObject{
     @Published private(set) var error: NetworkManager.NetworkingError?
     private var page = 1
     private var totalPages: Int?
+    private var skipPageIndex: Int = 0
+    private var limitPerPage: Int = 10
     var isLoading: Bool{
         viewState == .loading
     }
@@ -28,9 +30,9 @@ class PostsViewModel: ObservableObject{
         defer{viewState = .finished}
         
         do{
-            let response = try await NetworkManager.shared.request(.posts(page: page), ofType: PostModel.self)
+            let response = try await NetworkManager.shared.request(.posts(limit: limitPerPage, skip: skipPageIndex), ofType: PostModel.self)
             self.posts = response.posts
-            self.totalPages = response.total / response.limit
+            self.totalPages = response.total / limitPerPage
         }catch{
             self.hasError = true
             if let networkingError = error as? NetworkManager.NetworkingError {
@@ -47,9 +49,11 @@ class PostsViewModel: ObservableObject{
         viewState = .fetching
         
         defer{viewState = .finished}
+        skipPageIndex = page * limitPerPage
         page = page + 1
+        
         do{
-            let response = try await NetworkManager.shared.request(.posts(page: page), ofType: PostModel.self)
+            let response = try await NetworkManager.shared.request(.posts(limit: limitPerPage, skip: skipPageIndex), ofType: PostModel.self)
             self.posts += response.posts
             print("posts.count = \(posts.count)")
         }catch{

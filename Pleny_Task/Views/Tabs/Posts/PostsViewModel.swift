@@ -32,6 +32,8 @@ class PostsViewModel: ObservableObject{
         do{
             let response = try await NetworkManager.shared.request(.posts(limit: limitPerPage, skip: skipPageIndex), ofType: PostModel.self)
             self.posts = response.posts
+            
+            // limit per page parameter is set to 10, so if total posts are 150 then pages will be 15
             self.totalPages = response.total / limitPerPage
         }catch{
             self.hasError = true
@@ -43,12 +45,14 @@ class PostsViewModel: ObservableObject{
         }
     }
     
+    // for pagination
     @MainActor
     func fetchNextPostsPage() async{
         guard page != totalPages else{return}
         viewState = .fetching
         
         defer{viewState = .finished}
+        // must increment the skipPageIndex variable in order not to fetch the same page elements again
         skipPageIndex = page * limitPerPage
         page = page + 1
         

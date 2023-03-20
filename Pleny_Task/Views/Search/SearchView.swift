@@ -59,6 +59,7 @@ struct SearchView: View {
                         }.padding(.all)
                             .onChange(of: searchText) { newValue in
                                 async{
+                                    // search text must contains 3 or more letters to enable search functionality
                                     if !newValue.isEmpty && newValue.count > 3{
                                         await vm.search(text: newValue)
                                     }

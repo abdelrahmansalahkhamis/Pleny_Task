@@ -11,15 +11,22 @@
 * I have implemented the MVVM pattern as an architectural patten
 
 * I have implemented a generic network layer using URLSession that can be implemented using any data type
+* for asyncronous operations, I've implemented (aync / await) technology which is the latest introduced in swift, instead of combine or closures
 
-* I have the NetworkManager that is used for both network layer and unit testing
+* I have implemented the NetworkManager class that is used for both network layer and unit testing
+
+* design patterns used :
+    * coordinator
+    * singleton
 
 * for the project herarichy, there are several groups of files that manages the entire code
 
+* the app supports dark theme as well as light theme
+
 * some import notes regarding the implemented equations:-
 
-** for pagination in posts screen, I've configured paging to retreive 10 posts per page
-** for search, in order to call api the search word must contains at least 3 letters which will make search api not get called to much time
+    * for pagination in posts screen, I've configured paging to retreive 10 posts per page
+    * for search, in order to call api the search word must contains at least 3 letters which will make search api not get called to much time
 
 ## Screenshot
 
